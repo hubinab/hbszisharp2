@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanacsado", "Tanacsado\Tana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{545B0688-237D-4EF6-971E-7F4B19F367FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanacsadoGUI", "TanacsadoGUI\TanacsadoGUI.csproj", "{42FC7169-344B-4F0F-AACD-AE0218D12C94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{545B0688-237D-4EF6-971E-7F4B19F367FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{545B0688-237D-4EF6-971E-7F4B19F367FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{545B0688-237D-4EF6-971E-7F4B19F367FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42FC7169-344B-4F0F-AACD-AE0218D12C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42FC7169-344B-4F0F-AACD-AE0218D12C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42FC7169-344B-4F0F-AACD-AE0218D12C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42FC7169-344B-4F0F-AACD-AE0218D12C94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

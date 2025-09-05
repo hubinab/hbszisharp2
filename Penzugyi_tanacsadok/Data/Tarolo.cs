@@ -8,6 +8,12 @@ namespace Data
 {
     public class Tarolo
     {
+        public List<Tanacsado> SzurtTanacsadok(int szakteruletid)
+        { 
+            return Tanacsadok.Where(t => t.SzakteruletId == szakteruletid)
+                    .OrderBy(t => t.Nev)
+                    .ToList();
+        }
         public List<(Tanacsado tanacsado, int osszeg)> Top3Legjobbankereso()
         {
             return Tanacsadok.Select(t => (t,Talalkozok.Where(tal => tal.TanacsadoId == t.TanacsadoId).Sum(tal => tal.TalalkozoAra(t.Oradij))))
