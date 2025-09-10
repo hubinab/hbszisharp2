@@ -53,4 +53,26 @@ public class Logic
     {
         return autok.Where(x => x.Uzemanyag == uzemanyag).Select(x => (x, tulajdonosok.Where(y => y.Modell == x.Modell).Select(y => y.TulajdonosNev).ToList())).ToList();
     }
+
+    public (Tulajdonosok tulaj, TulajdonosAdatok tulajadatok, Autok autok)? NevSzerint(string nev)
+    {
+        var tulajdonos = tulajdonosok.FirstOrDefault(t => t.TulajdonosNev == nev);
+        if (tulajdonos is null)
+        {
+            return null;
+        }
+        else
+        {
+            return (tulajdonos, tulajdonosadatok.FirstOrDefault(x => x.TulajdonosId == tulajdonos.TulajdonosId), autok.FirstOrDefault(x => x.Modell == tulajdonos.Modell))!;
+        }
+    }
+    public List<(Tulajdonosok tulaj, Autok autok, TulajdonosAdatok tulajadatok)> KetLegidosebbDiesel()
+    {
+        // A .ToList()-re figyelmeztetést dobott, ezért lett a [.. ], amit jevasolt(nem az ai)
+        return [.. tulajdonosok.Join(autok, Tulajdonosok => Tulajdonosok.Modell, Autok => Autok.Modell, 
+                                    (Tulajdonosok, Autok) => (Tulajdonosok, Autok)).Where(x => x.Autok.Uzemanyag == "Dízel")
+                               .Join(tulajdonosadatok, Tulajdonosok => Tulajdonosok.Tulajdonosok.TulajdonosId, TulajdonosAdatok => TulajdonosAdatok.TulajdonosId,
+                                    (Tulajdonosok, TulajdonosAdatok) => (Tulajdonosok.Tulajdonosok, Tulajdonosok.Autok, TulajdonosAdatok))
+                               .OrderBy(x => x.TulajdonosAdatok.SzuletesiEv).Take(2)];
+    }
 }
