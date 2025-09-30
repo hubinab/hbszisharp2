@@ -18,7 +18,7 @@ public class Logic
         Logic logic = new();
         File.ReadLines(Path.Combine(directory, "autok.csv"))
             .Skip(1)
-            .Select(Autok.CreateFromCSV)
+            .Select(AutokData.Autok.CreateFromCSV)
             .Where(a => a is not null)
             .ToList()
             .ForEach(a => logic.autok.Add(a!));
@@ -75,4 +75,6 @@ public class Logic
                                     (Tulajdonosok, TulajdonosAdatok) => (Tulajdonosok.Tulajdonosok, Tulajdonosok.Autok, TulajdonosAdatok))
                                .OrderBy(x => x.TulajdonosAdatok.SzuletesiEv).Take(2)];
     }
+
+    public IEnumerable<Autok> Autok => autok.Select(x => x);
 }
